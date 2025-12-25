@@ -275,7 +275,8 @@ docker rm practice-limited
 docker run -d --name practice-export practice-image:1.0 30
 ```
 
-<img width="1214" height="520" alt="image" src="https://github.com/user-attachments/assets/0c7e0e05-c3f2-4535-8aaa-818f33567cb3" />
+<img width="1280" height="279" alt="image" src="https://github.com/user-attachments/assets/cf745e56-bc16-41d7-99a9-674dde95b9db" />
+
 
 
 Проверил статус контейнера:
@@ -290,7 +291,7 @@ docker ps -a | grep practice-export
 docker export practice-export > ~/docker-practice/container_export.tar
 ```
 
-<img width="928" height="25" alt="image" src="https://github.com/user-attachments/assets/c68fbc2e-cf8d-4bc1-9ec8-c5bed46ad03e" />
+
 
 
 Проверил размер архива:
@@ -299,13 +300,17 @@ docker export practice-export > ~/docker-practice/container_export.tar
 ls -lh ~/docker-practice/container_export.tar
 ```
 
+<img width="1085" height="46" alt="image" src="https://github.com/user-attachments/assets/395def29-46d5-41ea-af08-744155dce7e5" />
+
+
 Просмотрел содержимое архива:
 
 ```bash
 tar -tf ~/docker-practice/container_export.tar | head -20
 ```
 
-<img width="1211" height="56" alt="image" src="https://github.com/user-attachments/assets/56830b31-b41e-4dc4-9652-798b2f416625" />
+<img width="1280" height="494" alt="image" src="https://github.com/user-attachments/assets/b8d7b73b-b8fe-431a-9179-570c721fd9d0" />
+
 
 
 Создал сжатый архив и удалил контейнер
