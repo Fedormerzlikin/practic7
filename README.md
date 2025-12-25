@@ -17,7 +17,7 @@ mkdir ~/docker-practice
 cd ~/docker-practice
 ```
 
-**[СКРИНШОТ 1: Создание директории]**
+<img width="468" height="46" alt="image" src="https://github.com/user-attachments/assets/52153047-5fd6-4060-85be-c981c952e6e5" />
 
 ### Создание файла entrypoint.sh
 
@@ -52,8 +52,6 @@ echo "End time: $(date)"
 echo "Container completed successfully"
 ```
 
-**[СКРИНШОТ 2: Содержимое файла entrypoint.sh - команда cat entrypoint.sh]**
-
 ### Создание Dockerfile
 
 Создал Dockerfile:
@@ -83,8 +81,6 @@ ENTRYPOINT ["/home/appuser/entrypoint.sh"]
 CMD ["60"]
 ```
 
-**[СКРИНШОТ 3: Содержимое Dockerfile - команда cat Dockerfile]**
-
 ### Сборка образа
 
 Выполнил сборку Docker-образа:
@@ -93,8 +89,8 @@ CMD ["60"]
 chmod +x entrypoint.sh
 docker build -t practice-image:1.0 .
 ```
+<img width="1534" height="603" alt="image" src="https://github.com/user-attachments/assets/fdaf2e3d-2fff-42bf-aed9-b867efec18b5" />
 
-**[СКРИНШОТ 4: Процесс сборки образа - вывод docker build]**
 
 Проверил созданный образ:
 
@@ -102,7 +98,8 @@ docker build -t practice-image:1.0 .
 docker images
 ```
 
-**[СКРИНШОТ 5: Список образов - команда docker images с practice-image]**
+<img width="1030" height="279" alt="image" src="https://github.com/user-attachments/assets/9953fd85-484b-4d51-a910-cdaaf2b9a927" />
+
 
 ---
 
@@ -120,7 +117,7 @@ docker images
 docker run -d --name practice-container-1 practice-image:1.0 30
 ```
 
-**[СКРИНШОТ 6: Запуск контейнера - команда docker run и docker ps]**
+<img width="1482" height="50" alt="image" src="https://github.com/user-attachments/assets/468b4d84-576c-46bc-8582-bac0ebb336a9" />
 
 Просмотрел логи контейнера в реальном времени:
 
@@ -128,7 +125,7 @@ docker run -d --name practice-container-1 practice-image:1.0 30
 docker logs -f practice-container-1
 ```
 
-**[СКРИНШОТ 7: Вывод логов контейнера в реальном времени]**
+<img width="1426" height="550" alt="image" src="https://github.com/user-attachments/assets/f01be881-c1f9-4fb2-96e6-356cdb909fe3" />
 
 Проверил статус завершения контейнера:
 
@@ -136,7 +133,8 @@ docker logs -f practice-container-1
 docker ps -a | grep practice-container-1
 ```
 
-**[СКРИНШОТ 8: Статус завершенного контейнера (Exited 0)]**
+<img width="1420" height="53" alt="image" src="https://github.com/user-attachments/assets/c55c0031-4e68-4c9b-8c49-3d86b55ceb6d" />
+
 
 Сохранил логи в файл:
 
@@ -144,22 +142,10 @@ docker ps -a | grep practice-container-1
 docker logs practice-container-1 > ~/docker-practice/container_logs.txt
 cat ~/docker-practice/container_logs.txt
 ```
+<img width="1350" height="108" alt="image" src="https://github.com/user-attachments/assets/df3998aa-a3d1-4716-b5ca-3e56f6921d3d" />
 
-**[СКРИНШОТ 9: Содержимое сохраненных логов]**
 
-Сохранил логи с временными метками:
-
-```bash
-docker logs --timestamps practice-container-1 > ~/docker-practice/container_logs_timestamps.txt
-```
-
-**[СКРИНШОТ 10: Логи с временными метками]**
-
-Удалил контейнер:
-
-```bash
-docker rm practice-container-1
-```
+и Далее сохранил логи с временными метками и удалил контейнер
 
 ### Результат
 
@@ -187,7 +173,6 @@ docker run -d --name practice-container-2 practice-image:1.0 45
 docker stats practice-container-2
 ```
 
-**[СКРИНШОТ 11: Статистика контейнера в реальном времени - docker stats]**
 
 Сделал снимок статистики:
 
@@ -195,7 +180,8 @@ docker stats practice-container-2
 docker stats --no-stream practice-container-2
 ```
 
-**[СКРИНШОТ 12: Снимок статистики - docker stats --no-stream]**
+<img width="1434" height="50" alt="image" src="https://github.com/user-attachments/assets/07cff6a6-bedd-45e0-b722-06e333bf5d97" />
+
 
 Сохранил статистику в файл:
 
@@ -204,13 +190,10 @@ docker stats --no-stream practice-container-2 > ~/docker-practice/stats.txt
 cat ~/docker-practice/stats.txt
 ```
 
-**[СКРИНШОТ 13: Содержимое файла статистики]**
+<img width="1486" height="58" alt="image" src="https://github.com/user-attachments/assets/73e16b67-b522-4d48-91fd-dc1d1e648e4e" />
 
-Удалил контейнер после завершения:
 
-```bash
-docker rm practice-container-2
-```
+Удалил контейнер после завершения и сделал анализ метрик
 
 ### Анализ метрик
 
@@ -244,7 +227,8 @@ docker run -d --name practice-limited \
   practice-image:1.0 60
 ```
 
-**[СКРИНШОТ 14: Запуск контейнера с ограничениями]**
+<img width="940" height="125" alt="image" src="https://github.com/user-attachments/assets/6fb88465-cc15-4e6d-ad3e-4972f66f1d76" />
+
 
 Проверил статистику с учетом лимитов:
 
@@ -252,30 +236,24 @@ docker run -d --name practice-limited \
 docker stats --no-stream practice-limited
 ```
 
-**[СКРИНШОТ 15: Статистика с лимитом 256MiB]**
-
 Обновил лимиты на работающем контейнере:
 
 ```bash
 docker update --memory=512m --cpus=1.0 practice-limited
 ```
 
-**[СКРИНШОТ 16: Команда обновления лимитов]**
+<img width="555" height="42" alt="image" src="https://github.com/user-attachments/assets/e2133aad-6036-45c0-b730-3ef4030b4479" />
 
-Проверил обновленные лимиты:
 
-```bash
-docker stats --no-stream practice-limited
-```
-
-**[СКРИНШОТ 17: Статистика с обновленным лимитом 512MiB]**
-
-Остановил и удалил контейнер:
+Проверил, остановил и удалил контейнер:
 
 ```bash
 docker stop practice-limited
 docker rm practice-limited
 ```
+
+<img width="1412" height="59" alt="image" src="https://github.com/user-attachments/assets/10c878b8-b8dc-405e-bc92-4eb26cf6f763" />
+
 
 ### Результат
 
@@ -295,10 +273,10 @@ docker rm practice-limited
 
 ```bash
 docker run -d --name practice-export practice-image:1.0 30
-sleep 35
 ```
 
-**[СКРИНШОТ 18: Запуск контейнера для экспорта]**
+<img width="1214" height="520" alt="image" src="https://github.com/user-attachments/assets/0c7e0e05-c3f2-4535-8aaa-818f33567cb3" />
+
 
 Проверил статус контейнера:
 
@@ -312,7 +290,8 @@ docker ps -a | grep practice-export
 docker export practice-export > ~/docker-practice/container_export.tar
 ```
 
-**[СКРИНШОТ 19: Процесс экспорта контейнера]**
+<img width="928" height="25" alt="image" src="https://github.com/user-attachments/assets/c68fbc2e-cf8d-4bc1-9ec8-c5bed46ad03e" />
+
 
 Проверил размер архива:
 
@@ -320,30 +299,16 @@ docker export practice-export > ~/docker-practice/container_export.tar
 ls -lh ~/docker-practice/container_export.tar
 ```
 
-**[СКРИНШОТ 20: Размер созданного tar-архива]**
-
 Просмотрел содержимое архива:
 
 ```bash
 tar -tf ~/docker-practice/container_export.tar | head -20
 ```
 
-**[СКРИНШОТ 21: Содержимое tar-архива]**
+<img width="1211" height="56" alt="image" src="https://github.com/user-attachments/assets/56830b31-b41e-4dc4-9652-798b2f416625" />
 
-Создал сжатый архив:
 
-```bash
-docker export practice-export | gzip > ~/docker-practice/container_export.tar.gz
-ls -lh ~/docker-practice/container_export.tar*
-```
-
-**[СКРИНШОТ 22: Сравнение размеров обычного и сжатого архива]**
-
-Удалил контейнер:
-
-```bash
-docker rm practice-export
-```
+Создал сжатый архив и удалил контейнер
 
 ### Результат
 
@@ -365,47 +330,27 @@ docker rm practice-export
 docker import ~/docker-practice/container_export.tar restored-practice:1.0
 ```
 
-**[СКРИНШОТ 23: Процесс импорта образа из tar]**
+<img width="1385" height="53" alt="image" src="https://github.com/user-attachments/assets/2695ce72-90d5-4b02-84fa-a93dddfbd76e" />
 
-Проверил созданный образ:
 
-```bash
-docker images | grep restored
-```
-
-**[СКРИНШОТ 24: Восстановленный образ в списке]**
-
-Запустил контейнер из восстановленного образа:
+Проверил созданный образ и запустил контейнер из восстановленного образа:
 
 ```bash
 docker run -d --name restored-from-tar restored-practice:1.0 /home/appuser/entrypoint.sh 30
 ```
 
-**[СКРИНШОТ 25: Запуск контейнера из восстановленного образа]**
+<img width="1605" height="51" alt="image" src="https://github.com/user-attachments/assets/f958523d-9371-4916-80c5-e0bb6438e1d2" />
 
-Проверил работу контейнера:
 
-```bash
-docker ps | grep restored
-```
-
-Просмотрел логи восстановленного контейнера:
+Проверил работу контейнера, просмотрел логи восстановленного контейнера:
 
 ```bash
 sleep 35
 docker logs restored-from-tar
 ```
 
-**[СКРИНШОТ 26: Логи восстановленного контейнера]**
+<img width="1545" height="625" alt="image" src="https://github.com/user-attachments/assets/3c515a50-c183-4fd1-80c5-561579a1ef77" />
 
-Очистка:
-
-```bash
-docker rm restored-from-tar
-docker rmi restored-practice:1.0
-```
-
-**[СКРИНШОТ 27: Удаление контейнера и образа]**
 
 ### Результат
 
@@ -421,18 +366,8 @@ docker rmi restored-practice:1.0
 ls -lh ~/docker-practice/
 ```
 
-**[СКРИНШОТ 28: Список всех созданных файлов]**
+<img width="1009" height="226" alt="image" src="https://github.com/user-attachments/assets/38d2500b-1693-408f-8ee8-bae1f7122462" />
 
-Проверил финальное состояние Docker:
-
-```bash
-docker ps -a
-docker images
-```
-
-**[СКРИНШОТ 29: Финальное состояние контейнеров и образов]**
-
----
 
 ## Ответы на контрольные вопросы
 
@@ -522,41 +457,7 @@ docker run -d --name container image-name command
 3. ✅ **Ограничение ресурсов**: Применены лимиты CPU и памяти для обеспечения справедливого распределения ресурсов
 4. ✅ **Экспорт/Импорт**: Выполнена миграция контейнеров через tar-архивы
 
-Все задания выполнены успешно. Полученные навыки критически важны для построения надежных и масштабируемых приложений в production-среде.
 
----
-
-## Список использованных команд
-
-```bash
-# Сборка образа
-docker build -t practice-image:1.0 .
-
-# Работа с логами
-docker logs container_name
-docker logs --timestamps container_name
-docker logs -f container_name
-
-# Мониторинг
-docker stats container_name
-docker stats --no-stream container_name
-
-# Ограничение ресурсов
-docker run --memory=256m --cpus=0.5 image_name
-docker update --memory=512m container_name
-
-# Экспорт/Импорт
-docker export container_name > archive.tar
-docker import archive.tar image_name:tag
-
-# Управление контейнерами
-docker ps -a
-docker rm container_name
-docker rmi image_name
-```
-
----
-
-**Практическая работа выполнена:** [Дата]  
-**Выполнил:** [Ваше имя]  
-**Группа:** [Номер группы]
+**Практическая работа выполнена:** 26.12.2025
+**Выполнил:** Фёдор Мерзликин
+**Группа:** ПИ-432Б
